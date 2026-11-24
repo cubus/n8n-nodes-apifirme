@@ -1,0 +1,57 @@
+{
+  "name": "n8n-nodes-apifirme",
+  "version": "0.1.0",
+  "description": "Romanian company data from apifirme.dev in n8n: a company by CUI, the check before invoicing, financial statements, newly registered companies and changes at the companies you watch.",
+  "keywords": [
+    "n8n-community-node-package",
+    "romania",
+    "anaf",
+    "onrc",
+    "cui",
+    "company-data"
+  ],
+  "license": "MIT",
+  "homepage": "https://apifirme.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubus/n8n-nodes-apifirme.git"
+  },
+  "author": {
+    "name": "Cubus Arts S.R.L.",
+    "email": "dev@apifirme.dev"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "node test/run.js",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/ApifirmeApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Apifirme/Apifirme.node.js",
+      "dist/nodes/Apifirme/ApifirmeTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "release-it": "^21.1.0",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

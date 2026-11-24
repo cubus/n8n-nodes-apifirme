@@ -1,0 +1,31 @@
+[
+  {
+    "id": "apifirmeDevFlow01",
+    "name": "apifirme dev: a company, the watch list, a CUI that is none",
+    "active": false,
+    "nodes": [
+      { "id": "1", "name": "Start", "type": "n8n-nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {} },
+      {
+        "id": "2", "name": "Company", "type": "CUSTOM.apifirme", "typeVersion": 1, "position": [220, 0],
+        "parameters": { "resource": "company", "operation": "get", "cui": "RO 13548146" },
+        "credentials": { "apifirmeApi": { "id": "apifirme-dev", "name": "apifirme (dev stub)" } }
+      },
+      {
+        "id": "3", "name": "Watched", "type": "CUSTOM.apifirme", "typeVersion": 1, "position": [440, 0],
+        "parameters": { "resource": "watchlist", "operation": "list", "limit": 10 },
+        "credentials": { "apifirmeApi": { "id": "apifirme-dev", "name": "apifirme (dev stub)" } }
+      },
+      {
+        "id": "4", "name": "Not a CUI", "type": "CUSTOM.apifirme", "typeVersion": 1, "position": [660, 0], "onError": "continueRegularOutput",
+        "parameters": { "resource": "company", "operation": "get", "cui": "1850101123456" },
+        "credentials": { "apifirmeApi": { "id": "apifirme-dev", "name": "apifirme (dev stub)" } }
+      }
+    ],
+    "connections": {
+      "Start": { "main": [[{ "node": "Company", "type": "main", "index": 0 }]] },
+      "Company": { "main": [[{ "node": "Watched", "type": "main", "index": 0 }]] },
+      "Watched": { "main": [[{ "node": "Not a CUI", "type": "main", "index": 0 }]] }
+    },
+    "settings": {}
+  }
+]
