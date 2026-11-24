@@ -41,7 +41,7 @@ export class ApifirmeApi implements ICredentialType {
 		properties: {
 			headers: {
 				Authorization: '=Bearer {{$credentials.apiKey}}',
-				'x-apifirme-client': 'n8n-0.1.0',
+				'x-apifirme-client': 'n8n-0.1.1',
 			},
 		},
 	};
